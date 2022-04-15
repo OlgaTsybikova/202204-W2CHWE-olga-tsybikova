@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/OlgaTsybikova/202204-W2CHWE-olga-tsybikova#readme",
   "devDependencies": {
+    "eslint": "^8.13.0",
     "husky": "^7.0.0"
   }
 }
