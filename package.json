@@ -20,6 +20,9 @@
   "homepage": "https://github.com/OlgaTsybikova/202204-W2CHWE-olga-tsybikova#readme",
   "devDependencies": {
     "eslint": "^8.13.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
     "husky": "^7.0.0"
   }
 }
