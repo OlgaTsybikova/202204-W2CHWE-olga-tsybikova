@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npx --watch all",
     "prepare": "husky install"
   },
   "repository": {
@@ -19,7 +19,12 @@
   },
   "homepage": "https://github.com/OlgaTsybikova/202204-W2CHWE-olga-tsybikova#readme",
   "devDependencies": {
+    "@types/jest": "^27.4.1",
     "eslint": "^8.13.0",
-    "husky": "^7.0.0"
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "husky": "^7.0.0",
+    "jest": "^27.5.1"
   }
 }
