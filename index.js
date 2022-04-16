@@ -1,14 +1,24 @@
 const canvas = document.getElementById("canvasId");
 const context = canvas.getContext("2d");
 const board = [];
-context();
-canvas.onclick = function coordinates(event) {
+
+function drawCell() {
+  context.clearRect(0, 0, 300, 300);
+  for (let i = 0; i < 30; i++) {
+    for (let j = 0; j < 30; j++) {
+      if (board[i][j] === 1) {
+        context.fillRect(j * 10, i * 10, 10, 10);
+      }
+    }
+  }
+}
+canvas.onclick = function coordinatesCreator(event) {
   let x = event.offsetX;
   let y = event.offsetY;
-
   x = Math.floor(x / 10);
   y = Math.floor(y / 10);
   board[y][x] = 1;
+  drawCell();
 };
 
 function gameBoard() {
@@ -22,19 +32,3 @@ function gameBoard() {
   }
 }
 gameBoard();
-
-/* const neighbour = 0;
-if (neighbour >= 3) {
-  cell.status = 0;
-} else if (neighbour < 3) {
-  cell.status = 1;
-} else if (cell.status === 1) {
-  cell.status = 0;
-} else {
-  cell.status = 1;
-} */
-
-// if a living cell has more than three neighbors, it dies
-// if a living cell has less than three neighbors, it dies
-// if a dead cell has exactly three neighbors — it comes to life
-// in other cases, the cell remains in its state
