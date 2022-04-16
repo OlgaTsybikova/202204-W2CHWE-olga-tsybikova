@@ -1,16 +1,14 @@
 const canvas = document.getElementById("canvasId");
 const context = canvas.getContext("2d");
 const board = [];
-
-canvas.onclick = function (event) {
+context();
+canvas.onclick = function coordinates(event) {
   let x = event.offsetX;
   let y = event.offsetY;
-  console.log(x);
-  console.log(y);
+
   x = Math.floor(x / 10);
   y = Math.floor(y / 10);
   board[y][x] = 1;
-  console.log(board);
 };
 
 function gameBoard() {
