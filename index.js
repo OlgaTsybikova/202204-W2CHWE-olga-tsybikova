@@ -1,6 +1,6 @@
 const canvas = document.getElementById("canvasId");
 const context = canvas.getContext("2d");
-const board = [];
+let board = [];
 
 function drawCell() {
   context.clearRect(0, 0, 300, 300);
@@ -32,3 +32,23 @@ function gameBoard() {
   }
 }
 gameBoard();
+
+function startLife() {
+  const boardLife = [];
+  for (let i = 0; i < 30; i++) {
+    boardLife[i] = [];
+    for (let j = 0; j < 30; j++) {
+      const neighbours = 0;
+      if (neighbours === 2 || neighbours === 3) {
+        boardLife[i][j] = 1;
+      } else {
+        boardLife[i][j] = 0;
+      }
+    }
+  }
+  board = boardLife;
+}
+
+startLife();
+const start = true;
+document.getElementById("start").onclick = start;
