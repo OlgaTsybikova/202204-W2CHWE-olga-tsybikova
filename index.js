@@ -1,6 +1,7 @@
 const canvas = document.getElementById("box");
 const ctx = canvas.getContext("2d");
 let cell = [];
+const count = 0;
 
 function drawCell() {
   ctx.clearRect(0, 0, 300, 300);
@@ -12,6 +13,7 @@ function drawCell() {
     }
   }
 }
+
 canvas.onclick = function coordinatesCell(event) {
   let x = event.offsetX;
   let y = event.offsetY;
@@ -34,15 +36,11 @@ function goLife() {
 goLife();
 
 function whenCellgoesOverTheLimit(i) {
-  if (i === 0) {
-    return 30;
-  }
+  if (i === 0) return 30;
   return i;
 }
 function whenCellgoesOverTheLimitToo(i) {
-  if (i === 29) {
-    return -1;
-  }
+  if (i === 29) return -1;
   return i;
 }
 
@@ -54,44 +52,53 @@ function startLife() {
       let neighbors = 0;
       if (cell[whenCellgoesOverTheLimit(i) - 1][j] === 1) {
         neighbors++; // up
-      } else if (cell[i][whenCellgoesOverTheLimitToo(j) + 1] === 1) {
-        neighbors++; // right
-      } else if (cell[whenCellgoesOverTheLimitToo(i) + 1][j] === 1) {
-        neighbors++; // bottom
-      } else if (cell[i][whenCellgoesOverTheLimit(j) - 1] === 1) {
-        neighbors++;
-      } else if (
-        cell[whenCellgoesOverTheLimit(i) - 1][
-          whenCellgoesOverTheLimitToo(j) + 1
-        ] === 1
-      ) {
-        neighbors++;
-      } else if (
-        cell[whenCellgoesOverTheLimitToo(i) + 1][
-          whenCellgoesOverTheLimitToo(j) + 1
-        ] === 1
-      ) {
-        neighbors++;
-      } else if (
-        cell[whenCellgoesOverTheLimitToo(i) + 1][
-          whenCellgoesOverTheLimit(j) - 1
-        ] === 1
-      ) {
-        neighbors++;
-      } else if (
-        cell[whenCellgoesOverTheLimit(i) - 1][
-          whenCellgoesOverTheLimit(j) - 1
-        ] === 1
-      ) {
-        neighbors++;
-      } else if (neighbors === 2 || neighbors === 3) {
-        cellLive[i][j] = 1;
       }
-      cellLive[i][j] = 0;
+      if (cell[i][whenCellgoesOverTheLimitToo(j) + 1] === 1) {
+        neighbors++; // right
+      }
+      if (cell[whenCellgoesOverTheLimitToo(i) + 1][j] === 1) {
+        neighbors++; // bottom
+      }
+      if (cell[i][whenCellgoesOverTheLimit(j) - 1] === 1) {
+        neighbors++;
+      }
+      if (
+        cell[whenCellgoesOverTheLimit(i) - 1][
+          whenCellgoesOverTheLimitToo(j) + 1
+        ] === 1
+      ) {
+        neighbors++;
+      }
+      if (
+        cell[whenCellgoesOverTheLimitToo(i) + 1][
+          whenCellgoesOverTheLimitToo(j) + 1
+        ] === 1
+      ) {
+        neighbors++;
+      }
+      if (
+        cell[whenCellgoesOverTheLimitToo(i) + 1][
+          whenCellgoesOverTheLimit(j) - 1
+        ] === 1
+      ) {
+        neighbors++;
+      }
+      if (
+        cell[whenCellgoesOverTheLimit(i) - 1][
+          whenCellgoesOverTheLimit(j) - 1
+        ] === 1
+      ) {
+        neighbors++;
+      }
+      // eslint-disable-next-line no-unused-expressions
+      neighbors === 2 || neighbors === 3
+        ? (cellLive[i][j] = 1)
+        : (cellLive[i][j] = 0);
     }
   }
   cell = cellLive;
   drawCell();
+  document.getElementById("count").innerHTML = count;
 }
 
-document.getElementById("start").onclick = startLife();
+document.getElementById("start").onclick = startLife;
