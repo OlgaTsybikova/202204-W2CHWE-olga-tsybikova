@@ -24,11 +24,11 @@ canvas.onclick = function cellCoordinates(event) {
 };
 
 function goLife() {
-  const n = 30;
-  const m = 30;
-  for (let i = 0; i < m; i++) {
+  const row = 30;
+  const column = 30;
+  for (let i = 0; i < column; i++) {
     cell[i] = [];
-    for (let j = 0; j < n; j++) {
+    for (let j = 0; j < row; j++) {
       cell[i][j] = 0;
     }
   }
@@ -41,6 +41,12 @@ function goOutIfMeetLimit(i) {
   }
   return i;
 }
+function goOutIfMeetLimitMoreThan(i) {
+  if (i === 29) {
+    return -1;
+  }
+  return i;
+}
 
 function startLife() {
   // моделирование жизни
@@ -50,6 +56,8 @@ function startLife() {
     for (let j = 0; j < 30; j++) {
       let neighbors = 0;
       if (cell[goOutIfMeetLimit(i) - 1][j] === 1) {
+        neighbors++;
+      } else if (cell[i][goOutIfMeetLimitMoreThan(j) + 1] === 1) {
         neighbors++;
       } else if (cell[i][goOutIfMeetLimit(j) + 1] === 1) {
         neighbors++;

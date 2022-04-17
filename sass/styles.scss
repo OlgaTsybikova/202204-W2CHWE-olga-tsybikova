@@ -1,7 +1,21 @@
 #mycanvas {
+  display: block;
   width: 300px;
   height: 300px;
   border: 3px solid black;
   margin: 40px;
-  background-color: aquamarine;
+  background-color: hsl(306, 43%, 68%);
+}
+h1 {
+  font-family: "Nunito", sans-serif;
+  margin: 40px;
+}
+.buttons-div {
+  margin: 40px;
+  display: inline-block;
+  justify-content: space-between;
+
+  :hover {
+    filter: brightness(120%);
+  }
 }
